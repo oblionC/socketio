@@ -4,6 +4,9 @@ const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+const port = 3000;
+
+const users = {}
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
@@ -11,10 +14,14 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
     socket.on("chat message", (msg) => {
-        io.emit("chat message", msg);
+        io.emit("chat message", users[socket.id], msg);
     })
+    socket.on("username", (name) => {
+        users[socket.id] = name;
+        io.to(socket.id).emit("username", name);
+    });
 })
 
-server.listen(3000, () => {
-    console.log("Listening on port 3000");
+server.listen(port, () => {
+    console.log(`Listening on port ${port}`);
 })
