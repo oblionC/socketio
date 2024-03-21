@@ -7,6 +7,7 @@ const io = new Server(server);
 const port = 3000;
 
 const users = {}
+const colors = {} 
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
@@ -19,6 +20,7 @@ io.on("connection", (socket) => {
     socket.on("username", (name) => {
         users[socket.id] = name;
         io.to(socket.id).emit("username", name);
+        io.emit("user-joined", name);
     });
 })
 
