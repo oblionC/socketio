@@ -59,10 +59,21 @@
             }
         })
 
-        socket.on("chat message", (name, msg) => {
+        socket.on("chat message", (name, msg, color) => {
             var item = document.createElement("li");
-            item.textContent = `${name}: ${msg}`;
+
+            var nameElement = document.createElement("span");
+            nameElement.innerText = `${name}`
+            nameElement.style.color = color;
+
+            var messageEleemnt = document.createElement("span");
+            messageEleemnt.innerText = `: ${msg}`;
+
+            item.appendChild(nameElement);
+            item.appendChild(messageEleemnt);
+
             messages.appendChild(item);
+
             window.scrollTo(0, document.body.scrollHeight)
         })
 
@@ -85,6 +96,7 @@
             window.scrollTo(0, document.body.scrollHeight)
           }
         })
+
         </script>
   </body>
 </html>
