@@ -22,6 +22,11 @@ io.on("connection", (socket) => {
         io.to(socket.id).emit("username", name);
         io.emit("user-joined", name);
     });
+    socket.on("disconnect", () => {
+        var name = users[socket.id];
+        delete users[socket.id];
+        io.emit("user-left", name);
+    })
 })
 
 server.listen(port, () => {

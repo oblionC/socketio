@@ -76,6 +76,15 @@
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight)
         })
+
+        socket.on("user-left", (name) => {
+          if(name) {
+            var item = document.createElement("li");
+            item.textContent = `${name} left the chat!`;
+            messages.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight)
+          }
+        })
         </script>
   </body>
 </html>
