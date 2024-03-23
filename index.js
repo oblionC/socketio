@@ -6,6 +6,8 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const port = 3000;
 
+app.use(express.static(__dirname + '/public'));
+
 const RANDOM_COLORS = ["red", "green", "blue"]
 const users = {}
 const colors = {} 

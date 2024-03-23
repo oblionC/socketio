@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+    <link href="/styles.css" rel="stylesheet">
     <style>
       body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #262626;}
       li { color: white}
@@ -66,11 +67,11 @@
             nameElement.innerText = `${name}`
             nameElement.style.color = color;
 
-            var messageEleemnt = document.createElement("span");
-            messageEleemnt.innerText = `: ${msg}`;
+            var messageElement = document.createElement("span");
+            messageElement.innerText = `: ${msg}`;
 
             item.appendChild(nameElement);
-            item.appendChild(messageEleemnt);
+            item.appendChild(messageElement);
 
             messages.appendChild(item);
 

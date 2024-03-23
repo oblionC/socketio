@@ -1,2 +1,2 @@
+# This file ignores the node_modules folder from being copied over while the image is being created
 node_modules
-Dockerfile
